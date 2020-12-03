@@ -1,21 +1,17 @@
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <div>
-    <% @posts.each do |post| %>
-      <ul>
-        <li><%= post.text %></li>
-      </ul>
-    <% end %>
-  </div>
-</table>
+<div>
+  <% @posts.each do |post| %>
+    <ul>
+      <% if user_signed_in? %>
+          <li class="control">
+            <%= post.user.name %>
+          </li>
+        <% end %>
+      <li><%= post.text %></li>
+    </ul>
+  <% end %>
+</div>
 
 <br>
 
