@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import 'bulma';
+@import 'bulma';
 
 .title {
   text-align: center;
@@ -24,6 +24,6 @@
   flex-wrap: wrap;
 }
 
- .notification:not(:last-child) {
+.notification:not(:last-child) {
   margin-bottom: 0;
 }
