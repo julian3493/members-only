@@ -10,6 +10,41 @@
   </head>
 
   <body>
+    <% if flash[:notice]%>
+      <div class = 'notification is-success global-notification'>
+        <p class = 'notice'><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert]%>
+      <div class = 'notification is-danger global-notification'>
+        <p class = 'alert'><%= alert %></p>
+      </div>
+    <% end %>
+
+    <nav class='navbar is-primary'>
+      <div class='navbar-brand'>
+        <h1 class='title is-5 navbar-item'>Members Only</h1>
+      </div>
+      <div class='navbar-end'>
+        <div class='field is-grouped'>
+          <% if user_signed_in? %>
+            <p class="control">
+              <%= current_user.name %>
+            </p>
+            <p>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-primary" %>
+            </p>
+          <% else %>
+            <p class="control">
+              <%= link_to 'Sign In', new_user_session_path, class: "button is-primary" %>
+            </p>
+            <p class="control">
+              <%= link_to 'Sign Up', new_user_registration_path, class: "button is-primary" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
